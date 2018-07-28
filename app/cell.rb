@@ -1,6 +1,6 @@
 class Cell
   attr_accessor :x, :y, :value
-  
+
   def initialize(args)
     @x = args[:x]
     @y = args[:y]
@@ -16,7 +16,7 @@ class Cell
   end
 
   def next_state(world)
-    sum = self.neighbours(world).flatten.reduce(:+)
+    sum = self.neighbours(world).flatten.reduce(:+) - self.value
     if sum < 2 || sum > 3
       self.value = 0
     elsif self.value == 1 && (sum == 2 || sum == 3)
